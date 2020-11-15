@@ -224,7 +224,8 @@ zoomed_in<-ggplot(zoomed_cruises)+
   scale_fill_viridis_c(name='Temperature [C]')+
   xlab('Date')+
   ylab('Pressure\n[dbar]')+
-  theme_preset
+  theme_preset+
+  theme(legend.text=element_text(size=12))
 
 ## Plotting the seasonality coefficients
 seasonality_reference<-data.frame(month=zoomed_cruises$month,
@@ -244,7 +245,7 @@ seasonal_effect<-ggplot(season_zoom)+
 ## Showing the final figure
 full_figure<-seasonal_effect/zoomed_in
 
-ggsave(full_figure,filename='mld_seasonality.pdf',device='pdf')
+ggsave(full_figure,filename='mld_seasonality.png',device='png')
 
 ## We can also look at density
 ## Plotting temperature profiles and MLD
